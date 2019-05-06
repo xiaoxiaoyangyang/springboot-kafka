@@ -1,0 +1,24 @@
+
+server:
+  port: 9090
+  servlet:
+    context-path: /kafka-demo
+spring:
+   kafka:
+    #指定kafka代理的地址
+    bootstrap-servers: 10.5.6.16:31062
+    #生产者的配置
+    producer:
+      batch-size: 16384
+      retries: 0
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    #消费者的配置
+    consumer:
+      group-id: test-consumer-group
+      auto-offset-reset: earliest
+      enable-auto-commit: true
+      auto-commit-interval: 100ms
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
